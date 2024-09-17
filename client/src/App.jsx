@@ -29,7 +29,11 @@ function App() {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(checkAuth());
+    const token = JSON.parse(sessionStorage.getItem("token"))
+    dispatch(checkAuth(token))
+    .then((response)=>{
+      console.log(response)
+    })
     // dispatch(fetchAllProducts())
     // .then((response)=>{
     //   console.log(response)

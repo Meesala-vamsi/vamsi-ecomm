@@ -21,7 +21,7 @@ import {
   DropdownMenuTrigger,
 } from "../ui/dropdown-menu";
 import { HiOutlineLogout } from "react-icons/hi";
-import { logoutUser } from "@/store/authSlice";
+import { logoutUser, resetTokenAndCredentials } from "@/store/authSlice";
 import { toast } from "react-toastify";
 import { IoSearch } from "react-icons/io5";
 import { useEffect, useState } from "react";
@@ -110,13 +110,18 @@ const Header = ({ displaySidebarItems, setOpenSidebar, openSidebar }) => {
   );
 
   const onClickLogout = () => {
-    dispatch(logoutUser()).then((response) => {
-      if (response?.data?.status === "success") {
-        toast.success(response?.data?.message);
-      } else {
-        toast.success(response?.data?.message);
-      }
-    });
+    // dispatch(logoutUser()).then((response) => {
+    //   if (response?.data?.status === "success") {
+    //     toast.success(response?.data?.message);
+    //   } else {
+    //     toast.success(response?.data?.message);
+    //   }
+    // });
+
+    dispatch(resetTokenAndCredentials());
+    sessionStorage.clear();
+    navigate("/auth/login");
+    toast.success("Logged out successfully.");
   };
 
   return (
