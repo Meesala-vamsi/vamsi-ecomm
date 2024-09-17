@@ -71,7 +71,7 @@ if (!(await user.comparePasswords(password, user.password))) {
     username:user.username
   });
 
-  res.status(200).cookie("token",token,{httpOnly:true,secure:false}).json({
+  res.status(200).cookie("token",token,{httpOnly:true,secure:true}).json({
     status: "success",
     message: "Logged in successfully.",
     data: {
