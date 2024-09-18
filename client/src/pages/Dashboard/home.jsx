@@ -72,7 +72,7 @@ const Home = () => {
   useEffect(() => {
     const timer = setInterval(() => {
       setCurrentSlide((prevSlide) => (prevSlide + 1) % slides.length);
-    }, 100000);
+    }, 5000);
 
     return () => clearInterval(timer);
   }, []);
@@ -94,7 +94,7 @@ const Home = () => {
               alt={eachSlide}
               className={`${
                 index === currentSlide ? "opacity-100" : "opacity-0"
-              } absolute top-0 left-0 h-56 w-full object-cover`}
+              } absolute top-0 left-0 w-full object-cover`}
             />
 
             <div
