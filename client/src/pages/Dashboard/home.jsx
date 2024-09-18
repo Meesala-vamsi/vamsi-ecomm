@@ -72,7 +72,7 @@ const Home = () => {
   useEffect(() => {
     const timer = setInterval(() => {
       setCurrentSlide((prevSlide) => (prevSlide + 1) % slides.length);
-    }, 5000);
+    }, 100000);
 
     return () => clearInterval(timer);
   }, []);
@@ -85,7 +85,7 @@ const Home = () => {
   };
   return (
     <div className="flex flex-col min-h-screen bg-gray-50">
-      <div className="relative w-full h-[600px] overflow-hidden">
+      <div className="relative w-full h-[200px] lg:h-[600px] overflow-hidden">
         {slides.map((eachSlide, index) => (
           <>
             <img
@@ -94,27 +94,32 @@ const Home = () => {
               alt={eachSlide}
               className={`${
                 index === currentSlide ? "opacity-100" : "opacity-0"
-              } absolute top-0 left-0 w-full object-cover`}
+              } absolute top-0 left-0 h-56 w-full object-cover`}
             />
 
             <div
               className={
                 currentSlide === 2
-                  ? "absolute top-[35%] left-[35%] text-center flex flex-col gap-10"
-                  : "absolute top-[35%] left-[10%] text-start flex flex-col gap-10"
+                  ? "absolute top-[15%] lg:top-[35%] left-[35%] text-center flex flex-col gap-3 lg:gap-10"
+                  : "absolute top-[15%] lg:top-[35%] left-[10%] text-start flex flex-col gap-3 lg:gap-10"
               }
             >
-              <h1 className="font-bold text-5xl leading-none">
+              <h1 className="font-bold text-xl lg:text-5xl leading-none">
                 Get your <br /> Fashion Style
               </h1>
-              <div className="text-lg text-gray-500">
+              <div className="text-sm lg:text-lg text-gray-500">
                 <p>
                   Shop the latest clothing, shoes, and handbags from top fashion{" "}
                 </p>
                 <p>brands, style icons, and celebrities.</p>
               </div>
               <div className="mt-0">
-                <Button className="rounded-none w-40" onClick={()=>navigate("/dashboard/products")} >SHOP NOW</Button>
+                <Button
+                  className="rounded-none w-40"
+                  onClick={() => navigate("/dashboard/products")}
+                >
+                  SHOP NOW
+                </Button>
               </div>
             </div>
           </>

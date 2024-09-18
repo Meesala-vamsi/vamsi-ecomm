@@ -47,8 +47,10 @@ const Register = () => {
   };
 
   return (
-    <div className="lg:px-12 lg:py-12">
-      <h2 className="text-4xl font-thin leading-tight text-center">Sign up and get 20% off your first order</h2>
+    <div className="px-6 py-5 md:px-12 md:py-12">
+      <h2 className="text-xl md:text-3xl font-thin text-center">
+        Sign up and get 20% off your first order
+      </h2>
       <form action="" onSubmit={onSubmitDetails}>
         <div className="flex items-center border border-blue-300 h-10 my-5">
           <CgProfile className="text-2xl mx-3" />
@@ -87,11 +89,13 @@ const Register = () => {
           />
         </div>
         <div className="my-4 flex gap-3">
-          <p>Already have an account? </p>
-          <Link to="/auth/login">Login here</Link>
+          <p className="text-xs md:text-lg">Already have an account? </p>
+          <Link to="/auth/login" className="text-xs md:text-lg">
+            Login here
+          </Link>
         </div>
         <div className="flex justify-center">
-          <button type="submit" className="my-8 bg-black text-white">
+          <button type="submit" className="my-1 rounded-none py-1 lg:my-6 bg-black text-white">
             Register
           </button>
         </div>
