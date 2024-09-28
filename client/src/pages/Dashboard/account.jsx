@@ -5,9 +5,15 @@ import DashboardOrders from "./orders";
 const Account = () => {
   return (
     <div>
-      <img src={banner1} alt="banner-image" className="w-full lg:h-[500px]" />
-      <div className="px-6 py-4 mt-3">
-        <div className="px-7 py-6 shadow-lg rounded-md">
+      <div className="overflow-hidden">
+        <img
+          src="https://res.cloudinary.com/db0f83m76/image/upload/v1726667562/account_page_image_f9x6bx.webp"
+          alt="banner-image"
+          className="w-full lg:h-[500px] scale-150"
+        />
+      </div>
+      <div className="lg:px-6 lg:py-4 sm:border-0  mt-3">
+        <div className="lg:px-7 lg:py-6 shadow-lg rounded-md">
           <Tabs defaultValue="orders">
             <TabsList>
               <TabsTrigger value="orders">Orders</TabsTrigger>

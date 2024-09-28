@@ -6,7 +6,7 @@ import { Badge } from '../ui/badge';
 const DashboardOrderDetails = ({order}) => {
   return (
     <div>
-      <DialogContent className="w-1/2">
+      <DialogContent className="max-h-[90vh] max-w-[90vw] overflow-y-auto lg:w-1/2">
         <div className="flex justify-between mt-10">
           <p className="font-bold">Order ID</p>
           <label className="font-medium">{order?._id}</label>

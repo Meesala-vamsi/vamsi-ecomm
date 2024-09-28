@@ -65,6 +65,7 @@ const ProductDetailsDialog = ({
   console.log(calculatedReview)
   return (
     <Dialog
+      className="h-11"
       open={open}
       onOpenChange={() => {
         setOpen(false);
@@ -73,7 +74,7 @@ const ProductDetailsDialog = ({
         setReviewMsg("");
       }}
     >
-      <DialogContent className="max-w-[90vw] sm:max-w-[80vw] lg:max-w-[60vw] grid grid-cols-2 gap-4">
+      <DialogContent className="max-w-[90vw] sm:max-w-[100vw] lg:max-w-[60vw] sm:flex sm:flex-col md:grid md:grid-cols-2 gap-4 max-h-[90vh] overflow-y-auto">
         <div className="relative">
           <img
             src={productDetails?.image}
@@ -112,8 +113,8 @@ const ProductDetailsDialog = ({
             {productDetails?.totalStock > 0 ? "In Stock" : "Out of stock"}
           </p>
           <div className="flex gap-2 items-center">
-              <StarRating rating={calculatedReview}/>
-              <span className="text-gray-400">({calculatedReview})</span>
+            <StarRating rating={calculatedReview} />
+            <span className="text-gray-400">({calculatedReview})</span>
           </div>
           <Button
             disabled={productDetails?.totalStock <= 0}

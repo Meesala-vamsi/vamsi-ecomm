@@ -69,10 +69,15 @@ const Header = ({ displaySidebarItems, setOpenSidebar, openSidebar }) => {
     <div className="">
       <div className="flex flex-col gap-4 mt-3 justify-center lg:items-center lg:mt-0 lg:flex-row">
         <Sheet open={openCart} onOpenChange={setOpenCart}>
-          <BsCart3
-            className="text-2xl font-extrabold cursor-pointer"
+          <div
+            className="relative cursor-pointer"
             onClick={() => setOpenCart(true)}
-          />
+          >
+            <BsCart3 className="text-2xl font-extrabold" />
+            <div className="absolute hidden lg:block lg:top-[-10px] bg-black rounded-full text-white  text-[9px] lg:px-2 lg:py-1 lg:right-[-10px]">
+              {cartList?.items?.length > 0 ? cartList?.items?.length : 0}
+            </div>
+          </div>
           <CartSlide
             cartList={cartList?.items?.length > 0 ? cartList?.items : null}
             setOpenCart={setOpenCart}

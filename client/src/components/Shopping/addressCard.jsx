@@ -1,6 +1,5 @@
 import React from "react";
 import { Card } from "../ui/card";
-import { Button } from "../ui/button";
 import { CiEdit } from "react-icons/ci";
 import { MdDeleteOutline } from "react-icons/md";
 
@@ -10,11 +9,16 @@ const AddressCard = ({
   onClickDeleteAddress,
   onClickEditAddress,
   setSelectAddress,
+  getSelectAddress,
 }) => {
   return (
-    <div>
+    <div className="cursor-pointer outline-none">
       <Card
-        className="px-3 py-2 relative cursor-pointer"
+        className={
+          address._id === getSelectAddress?._id
+            ? "border-2 border-green-500 px-3 py-2 relative"
+            : "px-3 py-2 relative"
+        }
         onClick={address ? () => setSelectAddress(address) : null}
       >
         <h2 className="font-bold text-lg mb-2">Address {addressIndex + 1}</h2>

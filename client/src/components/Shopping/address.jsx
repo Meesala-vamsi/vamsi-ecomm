@@ -67,7 +67,7 @@ const initialAddressFormData = {
   city: "",
 };
 
-const Address = ({ setSelectAddress }) => {
+const Address = ({ setSelectAddress, getSelectAddress }) => {
   const [formData, setFormData] = useState(initialAddressFormData);
   const [getCurrentId, setCurrentId] = useState("");
   const dispatch = useDispatch();
@@ -145,7 +145,7 @@ const Address = ({ setSelectAddress }) => {
   return (
     <div>
       <Card>
-        <div className="px-7 py-4 grid grid-cols-1 sm:grid-cols-2 gap-6 ">
+        <div className="lg:px-7 lg:py-4 grid grid-cols-1 sm:grid-cols-2 gap-6 ">
           {addressList && addressList.length > 0
             ? addressList.map((eachAddress, index) => (
                 <AddressCard
@@ -155,11 +155,12 @@ const Address = ({ setSelectAddress }) => {
                   onClickDeleteAddress={onClickDeleteAddress}
                   onClickEditAddress={onClickEditAddress}
                   setSelectAddress={setSelectAddress}
+                  getSelectAddress={getSelectAddress}
                 />
               ))
             : null}
         </div>
-        <CardHeader className="flex-flex-col gap-4">
+        <CardHeader className="flex flex-col gap-4">
           <CardTitle className="pl-6">Add Address</CardTitle>
           <CardContent>
             <CommonForm

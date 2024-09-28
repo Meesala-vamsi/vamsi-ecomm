@@ -14,6 +14,7 @@ const Checkout = () => {
   const {successUrl} = useSelector(state=>state.orders)
   const dispatch = useDispatch()
 
+
   let totalPrice = 0;
   cartList?.items?.map((eachItem) => {
     if (eachItem?.salePrice > 0) {
@@ -30,7 +31,7 @@ const Checkout = () => {
       toast.error("Your cart is empty.Please add items to proceed.")
       return;
     }
-    
+
     if(!getSelectAddress){
       toast.error("Please select address to proceed.");
       return;
@@ -76,13 +77,17 @@ const Checkout = () => {
   return (
     <div>
       <img
-        src={banner1}
+        src="https://res.cloudinary.com/db0f83m76/image/upload/v1726667562/account_page_image_f9x6bx.webp"
         alt="checkout banner"
         className="w-full lg:h-[500px]"
       />
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
         <div className="lg:col-span-2 mt-2b  ">
-          <Address className="" setSelectAddress={setSelectAddress} />
+          <Address
+            className=""
+            setSelectAddress={setSelectAddress}
+            getSelectAddress={getSelectAddress}
+          />
         </div>
         <div className="px-7 py-10">
           {cartList?.items.map((eachItem) => (
