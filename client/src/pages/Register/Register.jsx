@@ -47,7 +47,7 @@ const Register = () => {
   };
 
   return (
-    <div className="px-6 py-5 md:px-12 md:py-12">
+    <div className="px-6 py-5 max-w-[80vw] rounded-sm md:px-12 md:py-20">
       <h2 className="text-xl md:text-3xl font-thin text-center">
         Sign up and get 20% off your first order
       </h2>
@@ -95,7 +95,10 @@ const Register = () => {
           </Link>
         </div>
         <div className="flex justify-center">
-          <button type="submit" className="my-1 rounded-none py-1 lg:my-6 bg-black text-white">
+          <button
+            type="submit"
+            className="my-1 rounded-none py-1 lg:my-6 bg-black text-white"
+          >
             Register
           </button>
         </div>
