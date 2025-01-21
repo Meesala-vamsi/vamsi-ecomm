@@ -75,6 +75,10 @@ exports.createOrder = asyncHandler(async (req, res, next) => {
           cartId,
         });
 
+        // https://deepdreamgenerator.com/ai-upscaler
+        // https://www.kupid.ai/my-models
+        // https://crushon.ai/search
+
         const successUrl = paymentData.links.find(
           (link) => link.rel === "approval_url"
         ).href;

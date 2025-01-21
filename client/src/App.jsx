@@ -1,26 +1,42 @@
 import { Route, Routes } from "react-router-dom";
 import "react-toastify/dist/ReactToastify.css";
-import Layout from "./components/Auth/Layout";
-import Login from "./pages/Login/Login";
-import Register from "./pages/Register/Register";
-import Dashboard from "./pages/Admin/dashboard";
-import Orders from "./pages/Admin/orders";
-import Products from "./pages/Admin/products";
-import AdminLayout from "./components/Admin/layout";
-import DashboardLayout from "./components/Shopping/layout";
-import DashProducts from "./pages/Dashboard/products";
-import Account from "./pages/Dashboard/account";
-import Checkout from "./pages/Dashboard/checkout";
-import NotFound from "./pages/NotFound/NotFound";
+// import Layout from "./components/Auth/Layout";
+// import Login from "./pages/Login/Login";
+// import Register from "./pages/Register/Register";
+// import Dashboard from "./pages/Admin/dashboard";
+// import Orders from "./pages/Admin/orders";
+// import Products from "./pages/Admin/products";
+// import AdminLayout from "./components/Admin/layout";
+// import DashboardLayout from "./components/Shopping/layout";
+// import DashProducts from "./pages/Dashboard/products";
+// import Account from "./pages/Dashboard/account";
+// import Checkout from "./pages/Dashboard/checkout";
+// import NotFound from "./pages/NotFound/NotFound";
 import ProtectedRoute from "./components/ProtectedRoute/ProtectedRoute";
-import Home from "./pages/Dashboard/home";
+// import Home from "./pages/Dashboard/home";
 import { ToastContainer } from "react-toastify";
 import { useDispatch, useSelector } from "react-redux";
-import { useEffect } from "react";
+import React, { Suspense, useEffect } from "react";
 import { checkAuth } from "./store/authSlice";
 import { fetchAllProducts } from "./store/productSlice";
-import PaymentSuccessPage from "./pages/Dashboard/paymentSuccess";
-import PaymentReturnPage from "./pages/Dashboard/paymentReturn";
+// import PaymentSuccessPage from "./pages/Dashboard/paymentSuccess";
+// import PaymentReturnPage from "./pages/Dashboard/paymentReturn";
+
+const Register = React.lazy(() => import("./pages/Register/Register"));
+const Dashboard = React.lazy(() => import("./pages/Admin/dashboard"));
+const Orders = React.lazy(() => import("./pages/Admin/orders"));
+const Products = React.lazy(() => import("./pages/Admin/products"));
+const AdminLayout = React.lazy(() => import("./components/Admin/layout"));
+const DashboardLayout = React.lazy(() => import("./components/Shopping/layout"));
+const DashProducts = React.lazy(() => import("./pages/Dashboard/products"));
+const Account = React.lazy(() => import("./pages/Dashboard/account"));
+const Checkout = React.lazy(() => import("./pages/Dashboard/checkout"));
+const NotFound = React.lazy(() => import("./pages/NotFound/NotFound"));
+const Home = React.lazy(() => import("./pages/Dashboard/home"));
+const Login = React.lazy(() => import("./pages/Login/Login"));
+const Layout = React.lazy(() => import("./components/Auth/Layout"));
+const PaymentSuccessPage = React.lazy(() => import("./pages/Dashboard/paymentSuccess"));
+const PaymentReturnPage = React.lazy(() => import("./pages/Dashboard/paymentReturn"));
 
 function App() {
   const { user, isAuthenticated, isLoading } = useSelector(
@@ -48,13 +64,21 @@ function App() {
     );
   }
   return (
-    <>
+    <Suspense
+      fallback={
+        <div className="absolute inset-0 bottom-1/2 flex items-center justify-center min-h-screen">
+          <div className="loader border-t-transparent border-4 border-gray-400 rounded-full w-9 h-9 animate-spin"></div>
+        </div>
+      }
+    >
       <Routes>
         <Route
           path="/"
           element={
-            <ProtectedRoute isAuthenticated={isAuthenticated} user={user}>
-            </ProtectedRoute>
+            <ProtectedRoute
+              isAuthenticated={isAuthenticated}
+              user={user}
+            ></ProtectedRoute>
           }
         />
         <Route
@@ -99,7 +123,7 @@ function App() {
         <Route path="*" element={<NotFound />} />
       </Routes>
       <ToastContainer />
-    </>
+    </Suspense>
   );
 }
 

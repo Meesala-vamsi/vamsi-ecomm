@@ -97,7 +97,7 @@ const DashProducts = () => {
       <div className="flex justify-between items-center border px-5 py-3 border-b">
         <h2 className="font-bold text-lg">All products</h2>
         <DropdownMenu>
-          <DropdownMenuTrigger className="bg-background border-0 p-0">
+          {/* <DropdownMenuTrigger className="bg-background border-0 p-0">
             <Button
               variant="outline"
               className="flex gap-2 border items-center w-full"
@@ -105,7 +105,7 @@ const DashProducts = () => {
               <HiArrowsUpDown className="text-lg" />
               Sort
             </Button>
-          </DropdownMenuTrigger>
+          </DropdownMenuTrigger> */}
           <DropdownMenuContent side="left">
             <DropdownMenuRadioGroup value={sort} onValueChange={handleSort}>
               {sortItems.map((eachItem) => (
