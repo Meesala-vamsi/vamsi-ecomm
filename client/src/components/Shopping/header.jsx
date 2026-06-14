@@ -48,7 +48,7 @@ const Header = ({ displaySidebarItems, setOpenSidebar, openSidebar }) => {
     dispatch(searchProducts(searchValue)).then((response) => {
       if (response.payload.status === "success") {
       } else {
-        toast.error(response.payload.message);
+        toast.error("Product not found.");
       }
     });
   };
@@ -165,6 +165,7 @@ const Header = ({ displaySidebarItems, setOpenSidebar, openSidebar }) => {
           placeholder="Search...."
           onChange={onChangeSearchInput}
           value={searchValue}
+          style={{background:"#fff"}}
         />
         <div
           className="bg-black flex justify-center p-2 rounded-tr-2xl w-12 rounded-br-2xl cursor-pointer"
